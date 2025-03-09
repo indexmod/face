@@ -23,7 +23,7 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
-    <title>Face by Andr oDei</title>
+    <title>Kawaii Face by Andr oDei</title>
     <style>
         body {
             display: flex;
@@ -35,9 +35,31 @@
         svg {
             cursor: pointer;
         }
+
+        .tap-message {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-family: monospace;
+    font-size: 20px;
+    color: black;
+}
+
+        .kawaii-credit {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-family: monospace;
+    font-size: 20px;
+    color: black;
+}
+
+        
     </style>
 </head>
 <body>
+    <div class="tap-message">Tap the screen or hold spacebar</div>
+
     <svg id="face" xmlns="http://www.w3.org/2000/svg" width="500" height="auto" viewBox="0 0 200 200">
         <!-- Лицо (немного изменена форма) -->
         <ellipse cx="100" cy="100" rx="85" ry="80" fill="#F4CD8A"/>
@@ -60,6 +82,9 @@
         <!-- Рот -->
         <path id="mouth" d="M80 140 Q100 160 120 140" stroke="black" stroke-width="5" fill="none"/>
     </svg>
+
+    <div class="kawaii-credit">Kawaii Face by Andr oDei (2025)</div>
+
 
     <script>
         function generateFace() {
