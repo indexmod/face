@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kawaii Face by Andr oDei</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #fff;
+        }
+        svg {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <svg id="face" xmlns="http://www.w3.org/2000/svg" width="500" height="auto" viewBox="0 0 200 200">
+        <!-- Лицо (немного изменена форма) -->
+        <ellipse cx="100" cy="100" rx="85" ry="80" fill="#F4CD8A"/>
+
+        <!-- Щёки -->
+        <g id="cheeks">
+            <circle id="cheek-left" cx="60" cy="120" r="15" fill="#d75e5d"/>
+            <circle id="cheek-right" cx="140" cy="120" r="15" fill="#d75e5d"/>
+        </g>
+
+        <!-- Глаза -->
+        <g id="eyes">
+            <path id="eye-left" d="M45 80 Q70 60 95 80" stroke="black" stroke-width="5" fill="none"/>
+            <path id="eye-right" d="M105 80 Q130 60 155 80" stroke="black" stroke-width="5" fill="none"/>
+        </g>
+
+        <!-- Нос -->
+        <circle id="nose" cx="100" cy="110" r="5" fill="black"/>
+
+        <!-- Рот -->
+        <path id="mouth" d="M80 140 Q100 160 120 140" stroke="black" stroke-width="5" fill="none"/>
+    </svg>
+
+    <script>
+        function generateFace() {
+            function randomRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            // Обновление щёк
+            let cheekOffset = randomRange(-5, 5);
+            document.getElementById('cheek-left').setAttribute('cx', 60 + cheekOffset);
+            document.getElementById('cheek-right').setAttribute('cx', 140 - cheekOffset);
+
+            // Обновление глаз
+            let eyeOffset = randomRange(-10, 10);
+            document.getElementById('eye-left').setAttribute('d', `M45 80 Q70 ${60 + eyeOffset} 95 80`);
+            document.getElementById('eye-right').setAttribute('d', `M105 80 Q130 ${60 + eyeOffset} 155 80`);
+
+            // Обновление рта
+            let mouthOffset = randomRange(150, 170);
+            document.getElementById('mouth').setAttribute('d', `M80 140 Q100 ${mouthOffset} 120 140`);
+        }
+
+        document.getElementById('face').addEventListener('click', generateFace);
+        document.getElementById('face').addEventListener('touchstart', generateFace);
+
+        document.addEventListener('keydown', function(event) {
+            if (event.code === 'Space') {
+                generateFace();
+            }
+        });
+    </script>
+</body>
+</html>
